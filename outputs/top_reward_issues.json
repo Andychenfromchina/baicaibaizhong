@@ -1,0 +1,906 @@
+[
+  {
+    "issue": 2020122,
+    "total_return": 12310,
+    "total_cost": 1492,
+    "total_profit": 10818,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift1",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 3200,
+        "profit": 2720,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::2胆8拖+蓝7:hit_warm",
+        "return": 9100,
+        "profit": 8120,
+        "reason": "passed"
+      }
+    ],
+    "roi": 7.25067
+  },
+  {
+    "issue": 2024068,
+    "total_return": 6110,
+    "total_cost": 712,
+    "total_profit": 5398,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift1|state_bluesrc_heuristic|hit_hot",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert",
+        "return": 2900,
+        "profit": 2700,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12:hit_hot",
+        "return": 3200,
+        "profit": 2720,
+        "reason": "passed"
+      }
+    ],
+    "roi": 7.581461
+  },
+  {
+    "issue": 2021087,
+    "total_return": 3885,
+    "total_cost": 812,
+    "total_profit": 3073,
+    "win_count": 4,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift2|state_bluesrc_heuristic",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆5拖+蓝10:state_bluearm_mean_revert|hit_hot",
+        "return": 100,
+        "profit": 0,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:state_bluearm_mean_revert|hit_warm",
+        "return": 300,
+        "profit": 100,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12:state_redarm_cold_rebound__bluearm_mean_revert",
+        "return": 3480,
+        "profit": 3000,
+        "reason": "passed"
+      }
+    ],
+    "roi": 3.784483
+  },
+  {
+    "issue": 2024102,
+    "total_return": 3175,
+    "total_cost": 1658,
+    "total_profit": 1517,
+    "win_count": 6,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+5:shift2|state_bluesrc_heuristic",
+        "return": 10,
+        "profit": 0,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluesrc_heuristic|hit_hot",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆4拖+蓝12:state_bluearm_mean_revert|hit_warm",
+        "return": 20,
+        "profit": -76,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert|hit_hot",
+        "return": 50,
+        "profit": -150,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12:state_redarm_cold_rebound__bluearm_mean_revert|form_hot",
+        "return": 120,
+        "profit": -360,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|entry_loose|form_confirmed",
+        "return": 2970,
+        "profit": 2130,
+        "reason": "passed"
+      }
+    ],
+    "roi": 0.914958
+  },
+  {
+    "issue": 2025138,
+    "total_return": 1845,
+    "total_cost": 580,
+    "total_profit": 1265,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift2|state_bluearm_mean_revert|hit_hot",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆5拖+蓝10:state_bluearm_mean_revert|hit_hot",
+        "return": 25,
+        "profit": -75,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "full_fushi",
+        "profile": "full_fushi::8+8:shift2|state_redsrc_heuristic|form_confirmed",
+        "return": 1810,
+        "profit": 1362,
+        "reason": "passed"
+      }
+    ],
+    "roi": 2.181034
+  },
+  {
+    "issue": 2026027,
+    "total_return": 1685,
+    "total_cost": 1320,
+    "total_profit": 365,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluearm_mean_revert__bluesrc_heuristic|hit_warm",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "full_fushi",
+        "profile": "full_fushi::8+8:shift2|state_redsrc_heuristic|form_confirmed",
+        "return": 190,
+        "profit": -258,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::2胆7拖+蓝12",
+        "return": 1485,
+        "profit": 645,
+        "reason": "passed"
+      }
+    ],
+    "roi": 0.276515
+  },
+  {
+    "issue": 2021027,
+    "total_return": 1330,
+    "total_cost": 608,
+    "total_profit": 722,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆4拖+蓝12",
+        "return": 120,
+        "profit": 24,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12:state_bluearm_mean_revert|hit_warm",
+        "return": 1200,
+        "profit": 720,
+        "reason": "passed"
+      }
+    ],
+    "roi": 1.1875
+  },
+  {
+    "issue": 2020097,
+    "total_return": 1320,
+    "total_cost": 1662,
+    "total_profit": -342,
+    "win_count": 6,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+5:shift1|state_bluefocus_tight",
+        "return": 50,
+        "profit": 40,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluefocus_tight",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "single_pack",
+        "profile": "single_pack::50:blue_spread|state_bluearm_mean_revert",
+        "return": 180,
+        "profit": 80,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10",
+        "return": 100,
+        "profit": -100,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 480,
+        "profit": 0,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|state_bluearm_mean_revert",
+        "return": 500,
+        "profit": -340,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.205776
+  },
+  {
+    "issue": 2020095,
+    "total_return": 1280,
+    "total_cost": 1792,
+    "total_profit": -512,
+    "win_count": 5,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift1",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆5拖+蓝10",
+        "return": 30,
+        "profit": -70,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10",
+        "return": 365,
+        "profit": 165,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 450,
+        "profit": -30,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::2胆8拖+蓝7:hit_hot",
+        "return": 425,
+        "profit": -555,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.285714
+  },
+  {
+    "issue": 2020102,
+    "total_return": 750,
+    "total_cost": 1552,
+    "total_profit": -802,
+    "win_count": 4,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift1",
+        "return": 10,
+        "profit": -22,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10",
+        "return": 70,
+        "profit": -130,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 150,
+        "profit": -330,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|state_bluearm_mean_revert",
+        "return": 520,
+        "profit": -320,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.516753
+  },
+  {
+    "issue": 2020130,
+    "total_return": 735,
+    "total_cost": 1792,
+    "total_profit": -1057,
+    "win_count": 5,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift2",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "single_pack",
+        "profile": "single_pack::50:blue_spread|state_bluearm_mean_revert",
+        "return": 85,
+        "profit": -15,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10",
+        "return": 70,
+        "profit": -130,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 150,
+        "profit": -330,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::2胆8拖+蓝7:hit_warm",
+        "return": 425,
+        "profit": -555,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.589844
+  },
+  {
+    "issue": 2025006,
+    "total_return": 700,
+    "total_cost": 332,
+    "total_profit": 368,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift2|state_bluearm_mean_revert",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert|hit_hot",
+        "return": 330,
+        "profit": 230,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert",
+        "return": 365,
+        "profit": 165,
+        "reason": "passed"
+      }
+    ],
+    "roi": 1.108434
+  },
+  {
+    "issue": 2021101,
+    "total_return": 685,
+    "total_cost": 1814,
+    "total_profit": -1129,
+    "win_count": 6,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+5:shift2|state_bluearm_mean_revert|hit_hot",
+        "return": 5,
+        "profit": -5,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "dantuo",
+        "profile": "dantuo::5胆2拖+蓝12:state_bluearm_mean_revert|hit_hot",
+        "return": 10,
+        "profit": -38,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆4拖+蓝12:state_bluearm_mean_revert|hit_warm",
+        "return": 25,
+        "profit": -71,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert|hit_hot",
+        "return": 70,
+        "profit": -130,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12:hit_warm",
+        "return": 150,
+        "profit": -330,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::2胆8拖+蓝7:state_redarm_cold_rebound__bluearm_mean_revert|hit_warm",
+        "return": 425,
+        "profit": -555,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.622381
+  },
+  {
+    "issue": 2024096,
+    "total_return": 680,
+    "total_cost": 1672,
+    "total_profit": -992,
+    "win_count": 6,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "single_pack",
+        "profile": "single_pack::5:blue_spread|entry_tight",
+        "return": 5,
+        "profit": -5,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift1|state_bluesrc_heuristic|hit_hot",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::2胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert",
+        "return": 25,
+        "profit": -75,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert|hit_hot",
+        "return": 50,
+        "profit": -150,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆7拖+蓝7:state_redarm_cold_rebound|form_confirmed",
+        "return": 175,
+        "profit": -315,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|entry_loose|form_confirmed",
+        "return": 420,
+        "profit": -420,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.593301
+  },
+  {
+    "issue": 2020053,
+    "total_return": 670,
+    "total_cost": 1368,
+    "total_profit": -698,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "dantuo",
+        "profile": "dantuo::5胆2拖+蓝12",
+        "return": 10,
+        "profit": -38,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 120,
+        "profit": -360,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::3胆7拖+蓝12",
+        "return": 540,
+        "profit": -300,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.510234
+  },
+  {
+    "issue": 2024074,
+    "total_return": 665,
+    "total_cost": 1352,
+    "total_profit": -687,
+    "win_count": 3,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:shift2|state_bluesrc_heuristic",
+        "return": 350,
+        "profit": 318,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12:hit_hot",
+        "return": 120,
+        "profit": -360,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "dantuo",
+        "profile": "dantuo::2胆7拖+蓝12",
+        "return": 195,
+        "profit": -645,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.508136
+  },
+  {
+    "issue": 2020100,
+    "total_return": 645,
+    "total_cost": 1662,
+    "total_profit": -1017,
+    "win_count": 6,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+5:core|state_bluefocus_tight",
+        "return": 5,
+        "profit": -5,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluefocus_tight",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "single_pack",
+        "profile": "single_pack::50:blue_spread|state_bluearm_mean_revert",
+        "return": 65,
+        "profit": -35,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10",
+        "return": 50,
+        "profit": -150,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 100,
+        "profit": -380,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|state_bluearm_mean_revert",
+        "return": 420,
+        "profit": -420,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.611913
+  },
+  {
+    "issue": 2024104,
+    "total_return": 640,
+    "total_cost": 1470,
+    "total_profit": -830,
+    "win_count": 5,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+5:shift2|state_bluesrc_heuristic",
+        "return": 5,
+        "profit": -5,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluesrc_heuristic|hit_hot",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "full_fushi",
+        "profile": "full_fushi::7+7:core|hit_hot",
+        "return": 35,
+        "profit": -63,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆7拖+蓝7:state_redarm_cold_rebound|form_confirmed",
+        "return": 175,
+        "profit": -315,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|entry_loose|form_confirmed",
+        "return": 420,
+        "profit": -420,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.564626
+  },
+  {
+    "issue": 2024103,
+    "total_return": 640,
+    "total_cost": 1620,
+    "total_profit": -980,
+    "win_count": 5,
+    "hits": [
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluesrc_heuristic|hit_hot",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "dantuo",
+        "profile": "dantuo::5胆5拖+蓝10:state_redarm_cold_rebound__bluearm_mean_revert|hit_hot",
+        "return": 25,
+        "profit": -75,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "dantuo",
+        "profile": "dantuo::4胆5拖+蓝10:hit_hot",
+        "return": 50,
+        "profit": -150,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "full_fushi",
+        "profile": "full_fushi::8+8:core|hit_hot",
+        "return": 140,
+        "profit": -308,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|entry_loose|form_confirmed",
+        "return": 420,
+        "profit": -420,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.604938
+  },
+  {
+    "issue": 2020099,
+    "total_return": 630,
+    "total_cost": 1662,
+    "total_profit": -1032,
+    "win_count": 6,
+    "hits": [
+      {
+        "budget": 10,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+5:core|state_bluefocus_tight",
+        "return": 5,
+        "profit": -5,
+        "reason": "passed"
+      },
+      {
+        "budget": 50,
+        "family": "blue_fushi",
+        "profile": "blue_fushi::6+16:core|state_bluefocus_tight",
+        "return": 5,
+        "profit": -27,
+        "reason": "passed"
+      },
+      {
+        "budget": 100,
+        "family": "single_pack",
+        "profile": "single_pack::50:blue_spread|state_bluearm_mean_revert",
+        "return": 50,
+        "profit": -50,
+        "reason": "passed"
+      },
+      {
+        "budget": 200,
+        "family": "single_pack",
+        "profile": "single_pack::100:blue_spread|state_bluearm_mean_revert",
+        "return": 50,
+        "profit": -150,
+        "reason": "passed"
+      },
+      {
+        "budget": 500,
+        "family": "dantuo",
+        "profile": "dantuo::3胆6拖+蓝12",
+        "return": 100,
+        "profit": -380,
+        "reason": "passed"
+      },
+      {
+        "budget": 1000,
+        "family": "full_fushi",
+        "profile": "full_fushi::9+5:core|state_bluearm_mean_revert",
+        "return": 420,
+        "profit": -420,
+        "reason": "passed"
+      }
+    ],
+    "roi": -0.620939
+  }
+]

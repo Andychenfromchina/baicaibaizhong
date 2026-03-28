@@ -1,0 +1,409 @@
+{
+  "10": {
+    "selected_family": "hold",
+    "family_stat_ema": 0.0,
+    "family_stat_score": 0.0,
+    "family_proxy_score": 0.0,
+    "predicted_gate_roi": -0.688048,
+    "chosen_policy": "nested_validation::hold",
+    "policy_score": 0.0,
+    "chosen_profile": "hold",
+    "description": "空仓观望",
+    "cost": 0,
+    "metadata": {
+      "budget": 10,
+      "predicted_gate_roi": -0.688048,
+      "decision": "nested_validation_hold",
+      "nested_validation_required": true,
+      "validated_family_count": 0,
+      "blocked_families": [],
+      "validated_profiles": []
+    },
+    "tickets": []
+  },
+  "50": {
+    "selected_family": "blue_fushi",
+    "family_stat_ema": 0.454728,
+    "family_stat_score": 1.0,
+    "family_proxy_score": 0.0,
+    "predicted_gate_roi": -0.727831,
+    "chosen_policy": "stat>=0.85::blue_fushi",
+    "policy_score": 0.472118,
+    "chosen_profile": "blue_fushi::6+16:core|state_bluefocus_tight|form_confirmed",
+    "description": "蓝球复式 6+16（稳态核心）（state_bluefocus_tight）（历史确认）",
+    "cost": 32,
+    "metadata": {
+      "reds": [
+        2,
+        9,
+        13,
+        18,
+        22,
+        25
+      ],
+      "blues": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "budget": 50,
+      "variant": "core|state_bluefocus_tight|form_confirmed",
+      "profile_key": "blue_fushi::6+16:core|state_bluefocus_tight|form_confirmed",
+      "base_proxy_score": 0.641884,
+      "expected_return": 13.6062,
+      "expected_profit_ratio": -0.574805,
+      "expected_return_ratio": 0.272125,
+      "budget_utilization": 0.64,
+      "hit_propensity": 0.666836,
+      "nested_validation_pass": true,
+      "nested_validation_mode": "hit",
+      "nested_validation_score": 1.0,
+      "nested_validation_reason": "passed",
+      "nested_validation_observations": 56,
+      "nested_validation_overall_roi": -0.832589,
+      "nested_validation_recent_roi": -0.830729,
+      "nested_validation_pass_ratio": 0.0,
+      "nested_validation_overall_profitable_hits": 0,
+      "nested_validation_recent_profitable_hits": 0,
+      "nested_validation_return_concentration": 0.033333,
+      "nested_validation_windows": [
+        {
+          "window": 12,
+          "roi": -0.830729
+        },
+        {
+          "window": 24,
+          "roi": -0.830729
+        },
+        {
+          "window": 48,
+          "roi": -0.830729
+        }
+      ],
+      "hit_validation_pass": true,
+      "hit_validation_score": 1.0,
+      "hit_validation_reason": "passed",
+      "hit_validation_overall_score": 0.411731,
+      "hit_validation_recent_score": 0.415962,
+      "hit_validation_overall_any_rate": 1.0,
+      "hit_validation_recent_any_rate": 1.0,
+      "hit_validation_overall_value_rate": 0.071429,
+      "hit_validation_recent_value_rate": 0.083333,
+      "hit_validation_pass_ratio": 1.0,
+      "hit_validation_windows": [
+        {
+          "window": 12,
+          "score": 0.415962
+        },
+        {
+          "window": 24,
+          "score": 0.413397
+        },
+        {
+          "window": 48,
+          "score": 0.415
+        }
+      ],
+      "gate_confidence": 0.844,
+      "predicted_gate_roi": -0.727831,
+      "nested_validation_required": true
+    },
+    "tickets": [
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 1,
+        "score": 0.656281
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 2,
+        "score": 0.629736
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 3,
+        "score": 0.569458
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 4,
+        "score": 0.551184
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 5,
+        "score": 0.524768
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 6,
+        "score": 0.568411
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 7,
+        "score": 0.621067
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 8,
+        "score": 0.516281
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 9,
+        "score": 0.635762
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 10,
+        "score": 0.626241
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 11,
+        "score": 0.55685
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 12,
+        "score": 0.654377
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 13,
+        "score": 0.551123
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 14,
+        "score": 0.549798
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 15,
+        "score": 0.547956
+      },
+      {
+        "reds": [
+          2,
+          9,
+          13,
+          18,
+          22,
+          25
+        ],
+        "blue": 16,
+        "score": 0.655604
+      }
+    ]
+  },
+  "100": {
+    "selected_family": "hold",
+    "family_stat_ema": 0.0,
+    "family_stat_score": 0.0,
+    "family_proxy_score": 0.0,
+    "predicted_gate_roi": -0.713695,
+    "chosen_policy": "nested_validation::hold",
+    "policy_score": 0.0,
+    "chosen_profile": "hold",
+    "description": "空仓观望",
+    "cost": 0,
+    "metadata": {
+      "budget": 100,
+      "predicted_gate_roi": -0.713695,
+      "decision": "nested_validation_hold",
+      "nested_validation_required": true,
+      "validated_family_count": 0,
+      "blocked_families": [],
+      "validated_profiles": []
+    },
+    "tickets": []
+  },
+  "200": {
+    "selected_family": "hold",
+    "family_stat_ema": 0.0,
+    "family_stat_score": 0.0,
+    "family_proxy_score": 0.0,
+    "predicted_gate_roi": -0.704803,
+    "chosen_policy": "nested_validation::hold",
+    "policy_score": 0.0,
+    "chosen_profile": "hold",
+    "description": "空仓观望",
+    "cost": 0,
+    "metadata": {
+      "budget": 200,
+      "predicted_gate_roi": -0.704803,
+      "decision": "nested_validation_hold",
+      "nested_validation_required": true,
+      "validated_family_count": 0,
+      "blocked_families": [
+        "single_pack"
+      ],
+      "validated_profiles": []
+    },
+    "tickets": []
+  },
+  "500": {
+    "selected_family": "hold",
+    "family_stat_ema": 0.0,
+    "family_stat_score": 0.0,
+    "family_proxy_score": 0.0,
+    "predicted_gate_roi": -0.541568,
+    "chosen_policy": "nested_validation::hold",
+    "policy_score": 0.0,
+    "chosen_profile": "hold",
+    "description": "空仓观望",
+    "cost": 0,
+    "metadata": {
+      "budget": 500,
+      "predicted_gate_roi": -0.541568,
+      "decision": "nested_validation_hold",
+      "nested_validation_required": true,
+      "validated_family_count": 0,
+      "blocked_families": [],
+      "validated_profiles": []
+    },
+    "tickets": []
+  },
+  "1000": {
+    "selected_family": "hold",
+    "family_stat_ema": 0.0,
+    "family_stat_score": 0.0,
+    "family_proxy_score": 0.0,
+    "predicted_gate_roi": 0.666528,
+    "chosen_policy": "nested_validation::hold",
+    "policy_score": 0.0,
+    "chosen_profile": "hold",
+    "description": "空仓观望",
+    "cost": 0,
+    "metadata": {
+      "budget": 1000,
+      "predicted_gate_roi": 0.666528,
+      "decision": "nested_validation_hold",
+      "nested_validation_required": true,
+      "validated_family_count": 0,
+      "blocked_families": [],
+      "validated_profiles": []
+    },
+    "tickets": []
+  }
+}

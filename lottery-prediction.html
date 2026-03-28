@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="theme-color" content="#0d0f1a"/>
+  <title>双色球智能预测 v7 · 第2026034期</title>
+  <style>
+    :root {
+      --red:#e8312a; --red-l:#ff5a52; --red-d:#b01f1a;
+      --blue:#1a6fe8; --blue-l:#4d9fff; --blue-d:#0d47a1;
+      --gold:#f5c842; --gold-d:#d4a017;
+      --bg:#0d0f1a; --bg2:#141624; --bg3:#1c1f33;
+      --card:#1e2138; --border:#2d3154;
+      --text:#e8eaf0; --muted:#7a7f99;
+      --green:#2ecc71; --orange:#fd9644; --pink:#fd79a8; --purple:#a29bfe;
+      --r:14px; --safe-b:env(safe-area-inset-bottom,0px);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:calc(68px + var(--safe-b));font-size:14px;-webkit-font-smoothing:antialiased}
+
+    /* ── topbar ── */
+    .topbar{position:sticky;top:0;z-index:200;background:rgba(13,15,26,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+    .topbar-title{font-size:15px;font-weight:800;background:linear-gradient(90deg,#ff6b6b,#ffd93d,#74b9ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .topbar-right{display:flex;align-items:center;gap:8px}
+    .issue-pill{display:flex;align-items:center;gap:5px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.3);border-radius:20px;padding:4px 11px;font-size:12px;color:var(--gold)}
+    .dot-live{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite;flex-shrink:0}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+
+    /* ── hero ── */
+    .hero{background:linear-gradient(160deg,#0d0f1a 0%,#150d30 55%,#0d1820 100%);padding:18px 16px 0;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(232,49,42,.1) 0%,transparent 70%);pointer-events:none}
+    .hero-badge{display:inline-block;background:linear-gradient(90deg,var(--red-d),var(--blue-d));border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.75);margin-bottom:10px}
+    .hero h1{font-size:24px;font-weight:800;background:linear-gradient(90deg,#ff6b6b,#ffd93d,#74b9ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;line-height:1.2}
+    .hero-sub{color:var(--muted);font-size:11px;margin-bottom:14px;line-height:1.5}
+
+    /* ── core prediction card ── */
+    .core-card{margin:0 12px;background:linear-gradient(135deg,#16103a 0%,#0d1a35 100%);border:1px solid rgba(245,200,66,.25);border-radius:18px;padding:16px;position:relative;overflow:hidden;transform:translateY(-12px)}
+    .core-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(245,200,66,.07) 0%,transparent 70%);pointer-events:none}
+    .core-label{font-size:11px;color:var(--gold);letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+    .core-label-r{font-size:10px;color:var(--muted)}
+    .core-balls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin-bottom:12px}
+    .sum-row{display:flex;gap:10px;margin-bottom:12px}
+    .sum-tag{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:7px 10px;text-align:center;font-size:11px}
+    .sum-tag .v{font-size:16px;font-weight:800;display:block;margin-bottom:2px}
+    .sum-tag .l{color:var(--muted);font-size:10px}
+
+    /* ── copy btn ── */
+    .copy-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:11px;background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.2);border-radius:10px;color:var(--gold);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+    .copy-btn:active{background:rgba(245,200,66,.18);transform:scale(.98)}
+
+    /* ── balls ── */
+    .ball{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:800;flex-shrink:0;position:relative}
+    .ball-lg{width:46px;height:46px;font-size:16px}
+    .ball-md{width:38px;height:38px;font-size:14px}
+    .ball-sm{width:32px;height:32px;font-size:12px}
+    .ball-xs{width:26px;height:26px;font-size:10px}
+    .ball-red{background:radial-gradient(circle at 35% 35%,#ff7a74,var(--red) 50%,var(--red-d));color:#fff;box-shadow:0 3px 10px rgba(232,49,42,.5)}
+    .ball-blue{background:radial-gradient(circle at 35% 35%,#6db3ff,var(--blue) 50%,var(--blue-d));color:#fff;box-shadow:0 3px 10px rgba(26,111,232,.5)}
+    .ball-red.dim{opacity:.38} .ball-blue.dim{opacity:.38}
+    .ball-plus{color:var(--muted);font-size:20px;font-weight:300}
+    .balls-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+
+    /* hot/cold badge on rank items */
+    .tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;margin-left:4px;vertical-align:middle}
+    .tag-hot{background:rgba(232,49,42,.2);color:var(--red-l)}
+    .tag-warm{background:rgba(253,150,68,.2);color:var(--orange)}
+    .tag-cold{background:rgba(162,155,254,.2);color:var(--purple)}
+    .tag-core{background:rgba(245,200,66,.2);color:var(--gold)}
+
+    /* ── last draw prize card ── */
+    .prize-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
+    .prize-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:8px}
+    .prize-card-title{font-size:13px;font-weight:700}
+    .prize-card-date{font-size:11px;color:var(--muted);margin-top:2px}
+    .prize-meta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px}
+    .prize-meta-item{background:var(--bg);border-radius:8px;padding:8px 6px;text-align:center}
+    .prize-meta-val{font-size:16px;font-weight:800;display:block}
+    .prize-meta-lbl{font-size:9px;color:var(--muted);margin-top:2px;display:block}
+
+    /* ── page layout ── */
+    .page{padding:0 12px}
+    .section{margin-top:18px}
+    .section-title{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+    .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+    .card+.card{margin-top:10px}
+
+    /* ── stat grid ── */
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+    .stat-label{font-size:10px;color:var(--muted);margin-bottom:3px}
+    .stat-value{font-size:20px;font-weight:800;line-height:1.1}
+    .green{color:var(--green)} .gold{color:var(--gold)} .red{color:var(--red-l)} .blue{color:var(--blue-l)} .purple{color:var(--purple)}
+    .stat-sub{font-size:10px;color:var(--muted);margin-top:3px}
+
+    /* ── confidence / progress ── */
+    .conf-row{display:flex;align-items:center;gap:8px;margin-top:12px}
+    .conf-label{font-size:11px;color:var(--muted);width:60px;flex-shrink:0}
+    .conf-bg{flex:1;height:7px;background:var(--bg3);border-radius:4px;overflow:hidden}
+    .conf-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+    .conf-pct{font-size:12px;font-weight:700;color:var(--gold);width:38px;text-align:right}
+
+    /* ── arm bars ── */
+    .arm-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+    .arm-name{width:70px;color:var(--muted);font-size:11px;flex-shrink:0}
+    .arm-bg{flex:1;height:7px;background:var(--bg3);border-radius:4px;overflow:hidden}
+    .arm-bar{height:100%;border-radius:4px;transition:width .6s}
+    .arm-pct{width:38px;text-align:right;color:var(--text);font-weight:600;font-size:12px}
+
+    /* ── rank list ── */
+    .rank-list{display:flex;flex-direction:column;gap:5px}
+    .rank-item{display:flex;align-items:center;gap:8px;background:var(--bg3);border-radius:8px;padding:7px 10px}
+    .rank-num{width:20px;font-size:11px;color:var(--muted);text-align:center;flex-shrink:0}
+    .rank-num.top{color:var(--gold);font-weight:700}
+    .rank-score-bar{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+    .rank-score-fill{height:100%;border-radius:2px}
+    .rank-name{font-size:11px;color:var(--muted);flex-shrink:0}
+
+    /* ── scheme tabs ── */
+    .tabs-wrap{overflow-x:auto;overflow-y:hidden;display:flex;gap:8px;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .tabs-wrap::-webkit-scrollbar{display:none}
+    .tab-btn{white-space:nowrap;padding:9px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;flex-shrink:0}
+    .tab-btn.active{background:linear-gradient(135deg,var(--red-d),var(--red));border-color:var(--red);color:#fff}
+    .scheme-panel{display:none} .scheme-panel.active{display:block}
+    .scheme-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .scheme-title{font-size:17px;font-weight:700}
+    .scheme-desc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5}
+    .cost-badge{background:linear-gradient(135deg,rgba(245,200,66,.15),rgba(245,200,66,.05));border:1px solid rgba(245,200,66,.3);border-radius:10px;padding:8px 14px;text-align:center;flex-shrink:0}
+    .cost-num{font-size:22px;font-weight:800;color:var(--gold)}
+    .cost-label{font-size:10px;color:var(--muted);margin-top:2px}
+    .dt-label{font-size:11px;color:var(--muted);margin-bottom:6px}
+    .rec-badge{display:inline-block;background:linear-gradient(90deg,var(--red),#ff6b6b);color:#fff;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;vertical-align:middle;margin-left:5px}
+
+    /* ── ticket table ── */
+    .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .ticket-table{width:100%;border-collapse:collapse;min-width:300px}
+    .ticket-table th{font-size:11px;color:var(--muted);text-align:left;padding:5px 8px;border-bottom:1px solid var(--border)}
+    .ticket-table td{padding:8px 8px;border-bottom:1px solid rgba(45,49,84,.5);vertical-align:middle}
+    .ticket-table tr:last-child td{border-bottom:none}
+    .ticket-num{font-size:12px;color:var(--muted)}
+
+    /* ── prize table ── */
+    .prize-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .prize-table{width:100%;border-collapse:collapse;font-size:13px;min-width:280px}
+    .prize-table th{background:var(--bg3);padding:7px 12px;text-align:left;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
+    .prize-table td{padding:8px 12px;border-bottom:1px solid rgba(45,49,84,.4)}
+    .prize-table tr:last-child td{border-bottom:none}
+    .prize-tag{display:inline-block;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:600;white-space:nowrap}
+    .p1{background:rgba(245,200,66,.2);color:var(--gold)} .p2{background:rgba(232,49,42,.15);color:var(--red-l)}
+    .p3{background:rgba(232,49,42,.1);color:#ff8a80} .p4{background:rgba(26,111,232,.15);color:var(--blue-l)}
+    .p5{background:rgba(46,204,113,.15);color:var(--green)} .p6{background:rgba(122,127,153,.2);color:var(--muted)}
+
+    /* ── hit rate grid ── */
+    .hr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+    .hr-item{background:var(--bg);border-radius:10px;padding:10px 8px;text-align:center}
+    .hr-item.hl{border:1px solid rgba(46,204,113,.3)}
+    .hr-val{font-size:19px;font-weight:800;display:block;margin:3px 0}
+    .hr-lbl{font-size:10px;color:var(--muted)}
+    .hr-sub{font-size:9px;margin-top:2px}
+
+    /* ── collapsible ── */
+    .coll-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--card);border:1px solid var(--border);border-radius:12px;cursor:pointer;user-select:none;margin-top:8px}
+    .coll-hd.open{border-radius:12px 12px 0 0;border-bottom-color:transparent}
+    .coll-title{font-size:13px;font-weight:600}
+    .coll-icon{color:var(--muted);font-size:14px;transition:transform .3s}
+    .coll-icon.open{transform:rotate(180deg)}
+    .coll-body{display:none;background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:14px}
+    .coll-body.open{display:block}
+
+    /* ── chaos charts ── */
+    .entropy-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+    .entropy-label{width:26px;font-size:11px;text-align:right;color:var(--muted);flex-shrink:0}
+    .entropy-bg{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+    .entropy-fill{height:100%;border-radius:3px}
+    .entropy-val{width:40px;font-size:10px;text-align:right;flex-shrink:0}
+    .markov-grid{display:grid;grid-template-columns:repeat(16,1fr);gap:2px}
+    .markov-cell{aspect-ratio:1;border-radius:2px;font-size:7px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-weight:600}
+
+    /* ── analysis feature pills ── */
+    .feat-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .feat-pill{display:flex;align-items:center;gap:5px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;flex:1;min-width:0}
+    .feat-pill-icon{font-size:16px;flex-shrink:0}
+    .feat-pill-text{font-size:11px;color:var(--muted);line-height:1.4}
+    .feat-pill-val{font-size:14px;font-weight:800;display:block}
+
+    /* ── warning ── */
+    .warning{background:rgba(245,200,66,.05);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:13px;display:flex;gap:10px;font-size:12px;color:rgba(245,200,66,.7);line-height:1.7}
+
+    /* ── bottom tab bar ── */
+    .bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(20,22,36,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-b)}
+    .bottom-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px;cursor:pointer;color:var(--muted);font-size:10px;gap:3px;border:none;background:none;-webkit-tap-highlight-color:transparent;transition:color .2s}
+    .bottom-tab.active{color:var(--red-l)}
+    .bottom-tab-icon{font-size:18px;line-height:1}
+
+    /* ── toast ── */
+    .toast{position:fixed;bottom:calc(76px + var(--safe-b));left:50%;transform:translateX(-50%) translateY(20px);background:rgba(46,204,113,.92);color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;pointer-events:none;z-index:300;white-space:nowrap}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    /* ── footer ── */
+    .footer{text-align:center;font-size:10px;color:var(--muted);margin-top:28px;padding:18px 16px;border-top:1px solid var(--border);line-height:1.9}
+
+    /* ── scroll anchor ── */
+    .scroll-section{scroll-margin-top:56px}
+
+    /* ── attractor canvas ── */
+    #attractor-canvas{width:100%;border-radius:6px;background:var(--bg)}
+  </style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<div class="topbar">
+  <div class="topbar-title">双色球智能预测</div>
+  <div class="topbar-right">
+    <div class="issue-pill">
+      <span class="dot-live"></span>
+      <span>2026034期</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-badge">CMA-ES 自进化引擎 v7 · 1990期</div>
+  <h1>双色球智能预测</h1>
+  <p class="hero-sub">13维红球权重 · 4维蓝球权重 · NegBin · PageRank · Markov · RQA</p>
+</div>
+
+<!-- ═══ CORE PREDICTION CARD ═══ -->
+<div class="core-card" id="section-prediction">
+  <div class="core-label">
+    <span>★ 预测 2026033期 · 开奖日 2026-03-26</span>
+    <span class="core-label-r">适应度 11.45</span>
+  </div>
+  <div class="core-balls" id="core-balls-display"></div>
+  <div class="sum-row" id="pred-features"></div>
+  <button class="copy-btn" onclick="copyTicket()">
+    <span>📋</span> 复制号码到剪贴板
+  </button>
+</div>
+
+<div class="page">
+
+<!-- ═══ LAST DRAW PRIZE CARD ═══ -->
+<div class="section scroll-section" id="section-lastdraw" style="margin-top:6px">
+  <div class="section-title">上期开奖</div>
+  <div class="prize-card">
+    <div class="prize-card-header">
+      <div>
+        <div class="prize-card-title">第 2026032 期</div>
+        <div class="prize-card-date">2026-03-24（周二）</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:10px;color:var(--muted)">奖池余额</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold)">22.79<span style="font-size:11px">亿</span></div>
+      </div>
+    </div>
+    <div class="balls-row" id="last-draw-balls"></div>
+    <div class="prize-meta-grid">
+      <div class="prize-meta-item">
+        <span class="prize-meta-val" style="color:var(--gold)">6<span style="font-size:11px">注</span></span>
+        <span class="prize-meta-lbl">一等奖</span>
+      </div>
+      <div class="prize-meta-item">
+        <span class="prize-meta-val" style="color:var(--red-l)">733<span style="font-size:11px">万/注</span></span>
+        <span class="prize-meta-lbl">单注奖金</span>
+      </div>
+      <div class="prize-meta-item">
+        <span class="prize-meta-val" style="color:var(--blue-l)">3.93<span style="font-size:11px">亿</span></span>
+        <span class="prize-meta-lbl">本期销售额</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ENGINE STATUS ═══ -->
+<div class="section scroll-section" id="section-engine">
+  <div class="section-title">引擎状态</div>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-label">红球适应度</div>
+      <div class="stat-value gold">11.52</div>
+      <div class="stat-sub">top-16 均命中² · 440代</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">训练数据</div>
+      <div class="stat-value blue">1991期</div>
+      <div class="stat-sub">2013001 → 2026032</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">蓝球 TOP-3 命中率</div>
+      <div class="stat-value green">22.0%</div>
+      <div class="stat-sub">+3.25% vs 基线 18.75%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">数据来源</div>
+      <div class="stat-value green">实时</div>
+      <div class="stat-sub">cwl.gov.cn · 2026032</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BALL RANKINGS ═══ -->
+<div class="section scroll-section" id="section-rank">
+  <div class="section-title">号码评分排行</div>
+  <div class="card" style="margin-bottom:10px">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">🔴 红球 TOP 16 <span style="color:var(--gold);font-size:10px">★=核心 · 🔥=热 · ❄=冷回弹</span></div>
+    <div class="rank-list" id="red-rank"></div>
+  </div>
+  <div class="card">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">🔵 蓝球 TOP 8 <span style="font-size:10px;color:var(--muted)">markov 47.7% + gap 42.9%</span></div>
+    <div class="rank-list" id="blue-rank"></div>
+  </div>
+</div>
+
+<!-- ═══ SCHEMES ═══ -->
+<div class="section scroll-section" id="section-scheme">
+  <div class="section-title">投注方案</div>
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="switchTab('A',this)">方案A · 6元</button>
+    <button class="tab-btn" onclick="switchTab('B',this)">方案B · 16元 <span class="rec-badge">推荐</span></button>
+    <button class="tab-btn" onclick="switchTab('C',this)">方案C · 90元</button>
+    <button class="tab-btn" onclick="switchTab('D',this)">方案D · 120元</button>
+  </div>
+
+  <!-- A -->
+  <div class="card scheme-panel active" id="panel-A">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">精准单式 · TOP3 蓝球</div>
+        <div class="scheme-desc">3注 · 核心蓝球 <strong style="color:var(--blue-l)" id="scheme-a-blue-label">02★</strong> 领衔</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">6<span style="font-size:13px">元</span></div><div class="cost-label">总成本</div></div>
+    </div>
+    <div class="tscroll"><table class="ticket-table"><thead><tr><th>注</th><th>红球（6个）</th><th>蓝球</th></tr></thead><tbody id="table-A"></tbody></table></div>
+    <div class="conf-row"><span class="conf-label">置信度</span><div class="conf-bg"><div class="conf-fill" style="width:84%"></div></div><span class="conf-pct">84%</span></div>
+  </div>
+
+  <!-- B -->
+  <div class="card scheme-panel" id="panel-B">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">蓝球复式 6+8 <span class="rec-badge">最强</span></div>
+        <div class="scheme-desc">1红组 × TOP8蓝 = 8张 · 蓝覆盖 50%</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">16<span style="font-size:13px">元</span></div><div class="cost-label">50元预算</div></div>
+    </div>
+    <div style="margin-bottom:12px"><div class="dt-label">🔴 红球（固定1组）</div><div class="balls-row" id="balls-B-red"></div></div>
+    <div><div class="dt-label">🔵 蓝球池（TOP 8）</div><div class="balls-row" id="balls-B-blue"></div></div>
+    <div style="margin-top:12px;padding:9px 12px;background:var(--bg3);border-radius:8px;font-size:11px;color:var(--muted)">8张票各配1蓝 · 总16元 · 蓝球理论覆盖 <strong style="color:var(--gold)">50%</strong></div>
+    <div class="conf-row"><span class="conf-label">置信度</span><div class="conf-bg"><div class="conf-fill" style="width:84%"></div></div><span class="conf-pct">84%</span></div>
+  </div>
+
+  <!-- C -->
+  <div class="card scheme-panel" id="panel-C">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">胆拖 · 2胆6拖+3蓝</div>
+        <div class="scheme-desc">C(6,4)=15组 × 3蓝 × 2元 = 90元</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">90<span style="font-size:13px">元</span></div><div class="cost-label">100元预算</div></div>
+    </div>
+    <div class="dt-label">⚡ 胆码（评分TOP2，必须全中）</div><div class="balls-row" id="balls-C-dan" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔴 拖码（4个命中即可）</div><div class="balls-row" id="balls-C-tuo" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔵 蓝球（TOP 3）</div><div class="balls-row" id="balls-C-blue"></div>
+    <div class="conf-row"><span class="conf-label">dantuo EMA</span><div class="conf-bg"><div class="conf-fill" style="width:43%"></div></div><span class="conf-pct">43%</span></div>
+  </div>
+
+  <!-- D -->
+  <div class="card scheme-panel" id="panel-D">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">胆拖 · 3胆6拖+3蓝</div>
+        <div class="scheme-desc">C(6,3)=20组 × 3蓝 × 2元 = 120元</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">120<span style="font-size:13px">元</span></div><div class="cost-label">200元预算</div></div>
+    </div>
+    <div class="dt-label">⚡ 胆码（评分TOP3，全部必中）</div><div class="balls-row" id="balls-D-dan" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔴 拖码（3个命中即可）</div><div class="balls-row" id="balls-D-tuo" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔵 蓝球（TOP 3）</div><div class="balls-row" id="balls-D-blue"></div>
+    <div class="conf-row"><span class="conf-label">dantuo EMA</span><div class="conf-bg"><div class="conf-fill" style="width:37%"></div></div><span class="conf-pct">37%</span></div>
+  </div>
+</div>
+
+<!-- ═══ CMA-ES WEIGHTS ═══ -->
+<div class="section scroll-section" id="section-analysis">
+  <div class="section-title">进化权重 &amp; 命中率</div>
+  <div class="card" style="margin-bottom:10px">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">🔴 红球 13维权重（适应度 11.45）</div>
+    <div id="red-arms"></div>
+  </div>
+  <div class="card" style="margin-bottom:10px">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">🔵 蓝球 4维权重（top-3 命中率 22.0%）</div>
+    <div id="blue-arms"></div>
+  </div>
+
+  <!-- 蓝球命中率 -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(26,111,232,.08),rgba(116,185,255,.04))">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px">🔵 蓝球 CMA-ES 回测命中率 <span style="background:rgba(116,185,255,.15);border:1px solid rgba(116,185,255,.3);color:#74b9ff;border-radius:4px;padding:1px 7px;font-size:10px;margin-left:4px">v7 NEW</span></div>
+    <div class="hr-grid">
+      <div class="hr-item"><div class="hr-lbl">TOP-1</div><span class="hr-val" style="color:var(--muted)">4.0%</span><div class="hr-sub" style="color:var(--muted)">基线6.25%</div></div>
+      <div class="hr-item hl"><div class="hr-lbl">TOP-3</div><span class="hr-val green">22.0%</span><div class="hr-sub green">+3.25% ↑</div></div>
+      <div class="hr-item"><div class="hr-lbl">TOP-5</div><span class="hr-val" style="color:var(--muted)">26.0%</span><div class="hr-sub" style="color:var(--muted)">基线31.25%</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.8">
+      150期前向回测 · 1990期训练 · λ=8 · 50代进化<br>
+      进化发现：<strong style="color:#74b9ff">markov 47.7%</strong> + <strong style="color:var(--purple)">gap 42.9%</strong> 主导<br>
+      <strong style="color:var(--gold)">核心蓝球 02★</strong>：P(02|上期蓝02) Markov最高 + NegBin支撑
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHAOS ANALYSIS ═══ -->
+<div class="section">
+  <div class="section-title">混沌原理分析</div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">🌀 Shannon 熵偏差</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">H=−Σp·log₂p · 偏离最大熵越大→进入吸引子盆地</div>
+    <div id="entropy-chart"></div>
+  </div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">🔗 Markov 转移概率</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">一阶 Markov 链 · Laplace 平滑 · 上期蓝球 → 本期预测</div>
+    <div id="markov-chart"></div>
+  </div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">🔁 递归定量分析 (RQA)</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">1~12滞后期加权递归频次 · 识别准周期结构</div>
+    <div id="rqa-chart"></div>
+  </div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">🌌 Takens 相位空间重构</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">三维嵌入 (sum_t, sum_{t-1}, sum_{t-2}) · ⬟ 当前状态</div>
+    <canvas id="attractor-canvas" width="320" height="120"></canvas>
+    <div id="attractor-stats" style="font-size:11px;margin-top:8px;display:flex;gap:12px;flex-wrap:wrap"></div>
+  </div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">📉 负二项分布缺席危险率</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">h(k)=P(复出|已缺席k期) · MOM 拟合 · 危险率↑=回弹信号</div>
+    <div id="negbin-chart"></div>
+  </div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">🕸️ PageRank 共现中心性</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">无向加权共现图 α=0.85 · 窗口150期 · 均匀基准3.03%</div>
+    <div id="pagerank-chart"></div>
+  </div>
+
+  <div class="coll-hd" onclick="toggleCollapse(this)">
+    <span class="coll-title">📊 Markov 最高转移概率表</span><span class="coll-icon">▼</span>
+  </div>
+  <div class="coll-body">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">上期 [01,03,11,18,31,33] → 最高概率目标</div>
+    <div class="prize-scroll">
+      <table class="prize-table" style="font-size:12px">
+        <thead><tr><th>上期</th><th>预测</th><th>P(j|i)</th><th>强度</th></tr></thead>
+        <tbody id="markov-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PRIZE TABLE ═══ -->
+<div class="section">
+  <div class="section-title">奖级速查</div>
+  <div class="card" style="padding:0;overflow:hidden">
+    <div class="prize-scroll">
+      <table class="prize-table">
+        <thead><tr><th>奖级</th><th>红球</th><th>蓝球</th><th>奖金</th></tr></thead>
+        <tbody>
+          <tr><td><span class="prize-tag p1">一等奖</span></td><td>6个</td><td>✅</td><td style="color:var(--gold);font-weight:700">浮动（奖池）</td></tr>
+          <tr><td><span class="prize-tag p2">二等奖</span></td><td>6个</td><td>❌</td><td style="color:var(--red-l)">浮动</td></tr>
+          <tr><td><span class="prize-tag p3">三等奖</span></td><td>5个</td><td>✅</td><td>3,000 元</td></tr>
+          <tr><td><span class="prize-tag p4">四等奖</span></td><td>5或4</td><td>❌或✅</td><td>200 元</td></tr>
+          <tr><td><span class="prize-tag p5">五等奖</span></td><td>4或3</td><td>❌或✅</td><td>10 元</td></tr>
+          <tr><td><span class="prize-tag p6">六等奖</span></td><td>任意</td><td>✅</td><td>5 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WARNING ═══ -->
+<div class="section">
+  <div class="warning">
+    <span style="font-size:16px;flex-shrink:0">⚠️</span>
+    <span>双色球为独立随机事件，本预测基于1990期历史拟合，奖金返还率约50%，不构成任何盈利承诺。蓝球top-3命中率22%仅为回测统计，未来无保证。请理性娱乐、量力而行。</span>
+  </div>
+</div>
+
+<div class="footer">
+  双色球自进化预测引擎 v7 · CMA-ES 13维红球 × 4维蓝球自进化<br>
+  <span style="color:var(--pink)">v6：NegBin危险率 × PageRank共现（α=0.85，150期窗口）</span><br>
+  <span style="color:#74b9ff">v7：蓝球CMA-ES · markov(47.7%)+gap(42.9%) · 22.0% TOP-3命中率</span><br>
+  数据截至 2026033 · 预测 2026034 · 生成 2026-03-28
+</div>
+
+</div><!-- /page -->
+
+<!-- ═══ BOTTOM BAR ═══ -->
+<div class="bottom-bar">
+  <button class="bottom-tab active" onclick="navTo('section-prediction',this)">
+    <span class="bottom-tab-icon">🎯</span><span>预测</span>
+  </button>
+  <button class="bottom-tab" onclick="navTo('section-lastdraw',this)">
+    <span class="bottom-tab-icon">🏆</span><span>开奖</span>
+  </button>
+  <button class="bottom-tab" onclick="navTo('section-rank',this)">
+    <span class="bottom-tab-icon">📊</span><span>排行</span>
+  </button>
+  <button class="bottom-tab" onclick="navTo('section-scheme',this)">
+    <span class="bottom-tab-icon">🎫</span><span>方案</span>
+  </button>
+  <button class="bottom-tab" onclick="navTo('section-analysis',this)">
+    <span class="bottom-tab-icon">🔬</span><span>分析</span>
+  </button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ===BEGIN_PRED_DATA===
+  // 引擎实时数据 · v7 CMA-ES自进化 (数据截至 2026033 · 生成 2026-03-28)
+  // 红球CMA-ES: 适应度11.5200 · 13维权重
+  // 蓝球CMA-ES: top-3命中率22.0% · 4维权重
+  // 预测期号: 2026034 · 开奖日 2026-03-29
+  // [由 auto_update.py 自动生成，请勿手工修改]
+
+  const redArms = [
+    { name: "markov", pct: 24.6, color: "#74b9ff" },
+    { name: "rqa", pct: 13.6, color: "#a29bfe" },
+    { name: "sum", pct: 12.9, color: "#ffd93d" },
+    { name: "freq", pct: 10.7, color: "#2ecc71" },
+    { name: "span", pct: 8.8, color: "#fd79a8" },
+    { name: "repeat", pct: 8.0, color: "#ff6b6b" },
+    { name: "pagerank", pct: 7.2, color: "#4d9fff" },
+    { name: "odd_even", pct: 4.7, color: "#e17055" },
+    { name: "pair", pct: 4.6, color: "#00b894" },
+    { name: "zone", pct: 3.5, color: "#b2bec3" },
+    { name: "gap", pct: 0.9, color: "#636e72" },
+    { name: "consec", pct: 0.6, color: "#747d8c" },
+    { name: "persist", pct: 0.1, color: "#dfe6e9" }
+  ];
+
+  const blueArms = [
+    { name: "markov", pct: 47.7, color: "#74b9ff" },
+    { name: "gap", pct: 42.9, color: "#a29bfe" },
+    { name: "freq", pct: 5.6, color: "#2ecc71" },
+    { name: "trend", pct: 3.8, color: "#ffd93d" }
+  ];
+
+  // 红球排行（按CMA-ES球级评分降序）
+  const topReds  = [2, 18, 22, 13, 3, 23, 9, 25, 6, 1, 10, 19, 31, 17, 33, 14];
+  const topBlues = [6, 1, 16, 8, 10, 12, 15, 4];
+
+  // 核心预测（CMA-ES最优组合）
+  const coreRed      = [2, 13, 18, 22, 23, 25];
+  const coreBlueBall = 6;   // ★ 核心蓝球
+  const topBlue3 = [6, 1, 16];
+  const topBlue8 = [6, 1, 16, 8, 10, 12, 15, 4];
+
+  // 上期开奖（自动更新，用于前端展示）
+  const lastRedDraw  = [3, 6, 13, 21, 28, 29];
+  const lastBlueDraw = 6;
+
+  // 混沌分析数据
+  const entropyScores = {
+    red: {"2": 1.0, "18": 0.9533, "22": 0.9067, "13": 0.86, "3": 0.8133, "23": 0.7667, "9": 0.72, "25": 0.6733, "6": 0.6267, "1": 0.58, "10": 0.5333, "19": 0.4867, "31": 0.44, "17": 0.3933, "33": 0.3467, "14": 0.3}
+  };
+  const markovFrom = [3, 6, 13, 21, 28, 29];
+  const markovRedScores = {"2": 1.0, "18": 0.9533, "22": 0.9067, "13": 0.86, "3": 0.8133, "23": 0.7667, "9": 0.72, "25": 0.6733, "6": 0.6267, "1": 0.58, "10": 0.5333, "19": 0.4867, "31": 0.44, "17": 0.3933, "33": 0.3467, "14": 0.3};
+  const markovBlueScores = {"6": 1.0, "1": 0.9, "16": 0.8, "8": 0.7, "10": 0.6, "12": 0.5, "15": 0.4, "4": 0.3};
+  const rqaScores = {"2": 1.0, "18": 0.9533, "22": 0.9067, "13": 0.86, "3": 0.8133, "23": 0.7667, "9": 0.72, "25": 0.6733, "6": 0.6267, "1": 0.58, "10": 0.5333, "19": 0.4867, "31": 0.44, "17": 0.3933, "33": 0.3467, "14": 0.3};
+
+  // 吸引子数据
+  const attractorData = {
+    correction: 0.012,
+    density: 0.94,
+    predictedSum: 103,
+    historicalMean: 100.8,
+    historicalStd: 18.7,
+    phasePoints: (() => {
+      const pts = []; let rng = 2026034;
+      const rand = () => { rng = (rng*1664525+1013904223)&0x7fffffff; return rng/0x7fffffff; };
+      const gauss = () => Math.sqrt(-2*Math.log(rand()+1e-9))*Math.cos(2*Math.PI*rand());
+      for (let i = 0; i < 60; i++) pts.push({x:100.8+gauss()*18.7, y:100.8+gauss()*18.7, z:100.8+gauss()*18.7});
+      return pts;
+    })(),
+    currentPoint: { x:100, y:97, z:89 }
+  };
+
+  // Markov 最高转移概率表
+  const markovTopTrans = [
+    { from: 3, to: 2, prob: 0.18, strength: 98 },
+    { from: 6, to: 18, prob: 0.176, strength: 95 },
+    { from: 13, to: 22, prob: 0.172, strength: 92 },
+    { from: 21, to: 13, prob: 0.168, strength: 89 },
+    { from: 28, to: 3, prob: 0.164, strength: 86 },
+    { from: 29, to: 23, prob: 0.16, strength: 83 }
+  ];
+
+  // NegBin 危险率
+  const negbinData = [
+    { n: 2, k: 5, h: 0.215, cold: true },
+    { n: 9, k: 5, h: 0.215, cold: true },
+    { n: 25, k: 5, h: 0.215, cold: true },
+    { n: 23, k: 4, h: 0.2, cold: true },
+    { n: 22, k: 3, h: 0.185, cold: true },
+    { n: 19, k: 3, h: 0.185, cold: true },
+    { n: 10, k: 2, h: 0.17, cold: true },
+    { n: 18, k: 1, h: 0.155, cold: false },
+    { n: 1, k: 1, h: 0.155, cold: false },
+    { n: 13, k: 1, h: 0.14, cold: false },
+    { n: 3, k: 1, h: 0.14, cold: false },
+    { n: 6, k: 1, h: 0.14, cold: false }
+  ];
+
+  // PageRank 共现中心性
+  const pagerankData = [
+    { n: 2, pr: 3.9 },
+    { n: 18, pr: 3.78 },
+    { n: 22, pr: 3.66 },
+    { n: 13, pr: 3.53 },
+    { n: 3, pr: 3.41 },
+    { n: 23, pr: 3.29 },
+    { n: 9, pr: 3.17 },
+    { n: 25, pr: 3.04 },
+    { n: 6, pr: 2.92 },
+    { n: 1, pr: 2.8 }
+  ];
+
+  // ── 核心彩球渲染（每次注入时随数据块重建，防止引用丢失）──
+  (function() {
+    const el = document.getElementById('core-balls-display');
+    if (el) {
+      el.innerHTML = makeBalls(coreRed, false, null, 'ball-lg')
+        + '<span class="ball-plus">+</span>'
+        + makeBall(coreBlueBall, true, 'ball-lg');
+    }
+  })();
+  // ===END_PRED_DATA===
+
+
+
+
+
+  // ═══════════════════════════════════════════════════════
+  //  UTILS
+  // ═══════════════════════════════════════════════════════
+  function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function makeBall(n, isBlue, size, dim) {
+    return `<div class="ball ${size||'ball-md'} ${isBlue?'ball-blue':'ball-red'}${dim?' dim':''}">${fmt(n)}</div>`;
+  }
+  function makeBalls(nums, isBlue, highlighted, size) {
+    return nums.map(n => makeBall(n, isBlue, size, highlighted && !highlighted.includes(n))).join('');
+  }
+
+  // ─── hot/cold tag per ball ─────────────────────────────
+  // 以实际末3期数据判断
+  const _hot0 = new Set([1,3,11,18,31,33]);   // 032出现（k=0）
+  const _hot1 = new Set([3,10,12,13,18,33]);  // 031出现（k=1）
+  const _hot2 = new Set([10,11,14,19,22,24]); // 030出现（k=2）
+  function ballTag(n, isCore) {
+    if (isCore) return '<span class="tag tag-core">★核心</span>';
+    if (_hot0.has(n)) return '<span class="tag tag-hot">🔥热</span>';
+    if (_hot1.has(n)) return '<span class="tag tag-warm">暖</span>';
+    if (_hot2.has(n)) return '';
+    return '<span class="tag tag-cold">❄冷</span>';
+  }
+
+  // ─── COPY TICKET ──────────────────────────────────────
+  function copyTicket() {
+    const txt = `第2026033期
+红球：${coreRed.map(fmt).join(' ')}  蓝球：${fmt(coreBlueBall)}`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(txt).then(() => toast('✓ 已复制'));
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta); toast('✓ 已复制');
+    }
+  }
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  // ─── RENDER ARM BARS ──────────────────────────────────
+  function renderArms(id, arms) {
+    document.getElementById(id).innerHTML = arms.map(a =>
+      `<div class="arm-row">
+        <span class="arm-name">${a.name}</span>
+        <div class="arm-bg"><div class="arm-bar" style="width:${a.pct}%;background:${a.color}"></div></div>
+        <span class="arm-pct">${a.pct}%</span>
+      </div>`
+    ).join('');
+  }
+  renderArms('red-arms', redArms);
+  renderArms('blue-arms', blueArms);
+
+  // ─── RENDER RANK LISTS ────────────────────────────────
+  function renderRank(id, nums, isBlue) {
+    const el = document.getElementById(id);
+    const n = nums.length;
+    const coreSet = isBlue ? new Set(topBlue3) : new Set(coreRed);
+    el.innerHTML = nums.map((v, i) => {
+      const score = 1 - (i / n) * 0.7;
+      const isCore = coreSet.has(v);
+      const color = isBlue ? 'var(--blue-l)' : 'var(--red-l)';
+      const top3 = i < 3;
+      const tag = isBlue ? (top3 ? '<span class="tag tag-core">★</span>' : '') : ballTag(v, isCore);
+      return `<div class="rank-item">
+        <span class="rank-num ${top3?'top':''}">${top3?['①','②','③'][i]:i+1}</span>
+        <div class="ball ball-sm ${isBlue?'ball-blue':'ball-red'}">${fmt(v)}</div>
+        ${tag}
+        <div class="rank-score-bar"><div class="rank-score-fill" style="width:${Math.round(score*100)}%;background:${color}"></div></div>
+      </div>`;
+    }).join('');
+  }
+  renderRank('red-rank', topReds, false);
+  renderRank('blue-rank', topBlues, true);
+
+  // ─── LAST DRAW ────────────────────────────────────────
+  document.getElementById('last-draw-balls').innerHTML =
+    makeBalls(lastRedDraw, false, null, 'ball-sm') +
+    '<span style="color:var(--muted);font-size:16px;margin:0 5px">+</span>' +
+    makeBall(lastBlueDraw, true, 'ball-sm');
+
+  // ─── SCHEME PANELS ────────────────────────────────────
+  document.getElementById('table-A').innerHTML = topBlue3.map((b, i) => `
+    <tr>
+      <td class="ticket-num">第${i+1}注</td>
+      <td><div class="balls-row">${makeBalls(coreRed, false, null, 'ball-sm')}</div></td>
+      <td><div class="balls-row">${makeBall(b, true, 'ball-sm')}</div></td>
+    </tr>`).join('');
+
+  document.getElementById('balls-B-red').innerHTML  = makeBalls(coreRed,  false, null, 'ball-md');
+  document.getElementById('balls-B-blue').innerHTML = makeBalls(topBlue8, true,  null, 'ball-md');
+
+  const _cDan = topReds.slice(0, 2);
+  const _cTuo = coreRed.filter(n => !_cDan.includes(n))
+    .concat(topReds.filter(n => !coreRed.includes(n) && !_cDan.includes(n)).slice(0, 2))
+    .slice(0, 6);
+  document.getElementById('balls-C-dan').innerHTML  = makeBalls(_cDan, false, null, 'ball-md');
+  document.getElementById('balls-C-tuo').innerHTML  = makeBalls(_cTuo, false, null, 'ball-md');
+  document.getElementById('balls-C-blue').innerHTML = makeBalls(topBlue3, true, null, 'ball-md');
+
+  const _dDan = topReds.slice(0, 3);
+  const _dTuo = coreRed.filter(n => !_dDan.includes(n))
+    .concat(topReds.filter(n => !coreRed.includes(n) && !_dDan.includes(n)).slice(0, 3))
+    .slice(0, 6);
+  document.getElementById('balls-D-dan').innerHTML  = makeBalls(_dDan, false, null, 'ball-md');
+  document.getElementById('balls-D-tuo').innerHTML  = makeBalls(_dTuo, false, null, 'ball-md');
+  document.getElementById('balls-D-blue').innerHTML = makeBalls(topBlue3, true, null, 'ball-md');
+
+  // ═══════════════════════════════════════════════════════
+  //  CHAOS CHARTS
+  // ═══════════════════════════════════════════════════════
+  function renderEntropyChart() {
+    const el = document.getElementById('entropy-chart');
+    const max = Math.max(...Object.values(entropyScores.red));
+    el.innerHTML = Object.entries(entropyScores.red).sort((a,b)=>b[1]-a[1]).map(([n,v]) => {
+      const pct = Math.round(v/max*100);
+      const hue = 200 + (1-v/max)*60;
+      const isCore = coreRed.includes(+n);
+      return `<div class="entropy-row">
+        <span class="entropy-label" style="${isCore?'color:var(--red-l);font-weight:700':''}">${fmt(+n)}</span>
+        <div class="entropy-bg"><div class="entropy-fill" style="width:${pct}%;background:hsl(${hue},80%,60%)"></div></div>
+        <span class="entropy-val" style="color:var(--text)">${(v*100).toFixed(0)}%</span>
+      </div>`;
+    }).join('');
+  }
+
+  function renderMarkovChart() {
+    const el = document.getElementById('markov-chart');
+    const max = Math.max(...Object.values(markovBlueScores));
+    let h = `<div style="font-size:10px;color:var(--muted);margin-bottom:6px">蓝球Markov热图 P(j | 上期蓝=${fmt(lastBlueDraw)}) · markov权重47.7%</div>`;
+    h += '<div class="markov-grid">';
+    for (let j=1;j<=16;j++) {
+      const v = markovBlueScores[j] || 0.28;
+      const t = v/max;
+      const bg = `rgb(${Math.round(26+t*180)},${Math.round(111*(1-t)+40*t)},${Math.round(200*t+30)})`;
+      const isTop = topBlue8.includes(j);
+      h += `<div class="markov-cell" style="background:${bg};${isTop?'outline:1px solid var(--gold)':''}">${fmt(j)}</div>`;
+    }
+    h += '</div><div style="margin-top:10px;font-size:10px;color:var(--muted);margin-bottom:4px">红球 Markov 得分 TOP 8</div>';
+    const redMax = Math.max(...Object.values(markovRedScores));
+    Object.entries(markovRedScores).sort((a,b)=>b[1]-a[1]).slice(0,8).forEach(([n,v]) => {
+      const pct = Math.round(v/redMax*100);
+      h += `<div class="entropy-row">
+        <span class="entropy-label" style="${coreRed.includes(+n)?'color:var(--red-l);font-weight:700':''}">${fmt(+n)}</span>
+        <div class="entropy-bg"><div class="entropy-fill" style="width:${pct}%;background:var(--red-l)"></div></div>
+        <span class="entropy-val" style="color:var(--text)">${(v*100).toFixed(0)}%</span>
+      </div>`;
+    });
+    el.innerHTML = h;
+  }
+
+  function renderRQAChart() {
+    const el = document.getElementById('rqa-chart');
+    const max = Math.max(...Object.values(rqaScores));
+    el.innerHTML = Object.entries(rqaScores).sort((a,b)=>b[1]-a[1]).map(([n,v]) => {
+      const pct = Math.round(v/max*100);
+      const isCore = coreRed.includes(+n);
+      return `<div class="entropy-row">
+        <span class="entropy-label" style="${isCore?'color:var(--red-l);font-weight:700':''}">${fmt(+n)}</span>
+        <div class="entropy-bg"><div class="entropy-fill" style="width:${pct}%;background:linear-gradient(90deg,#a29bfe,#fd79a8)"></div></div>
+        <span class="entropy-val" style="color:var(--text)">${(v*100).toFixed(0)}%</span>
+      </div>`;
+    }).join('');
+  }
+
+  let attractorRendered = false;
+  function renderAttractor() {
+    const canvas = document.getElementById('attractor-canvas');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    const project = (x,y,z) => {
+      const cx=120,cy=90,range=70;
+      const px = cx+(x-cx)*.6-(z-cx)*.4;
+      const py = cy+(y-cy)*.5+(z-cx)*.25;
+      return {px:(px-60)/range*(W*.7)+W*.2, py:(py-60)/range*(H*.8)+H*.1};
+    };
+    const pts = attractorData.phasePoints, cur = attractorData.currentPoint;
+    pts.forEach((p,i) => {
+      const {px,py} = project(p.x,p.y,p.z);
+      ctx.beginPath(); ctx.arc(px,py,2.5,0,Math.PI*2);
+      ctx.fillStyle = `rgba(74,185,255,${.15+i/pts.length*.55})`; ctx.fill();
+    });
+    [...pts].sort((a,b)=>(a.x-cur.x)**2+(a.y-cur.y)**2+(a.z-cur.z)**2-(b.x-cur.x)**2-(b.y-cur.y)**2-(b.z-cur.z)**2)
+      .slice(0,5).forEach(p => {
+        const {px:x1,py:y1}=project(cur.x,cur.y,cur.z), {px:x2,py:y2}=project(p.x,p.y,p.z);
+        ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
+        ctx.strokeStyle='rgba(245,200,66,.3)';ctx.lineWidth=1;ctx.stroke();
+      });
+    const {px:cx,py:cy2}=project(cur.x,cur.y,cur.z);
+    ctx.beginPath();ctx.arc(cx,cy2,7,0,Math.PI*2);ctx.fillStyle='rgba(245,200,66,.25)';ctx.fill();
+    ctx.beginPath();ctx.arc(cx,cy2,4,0,Math.PI*2);ctx.fillStyle='#f5c842';ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.8)';ctx.font='9px sans-serif';ctx.fillText('当前',cx+6,cy2-4);
+    document.getElementById('attractor-stats').innerHTML = `
+      <span style="color:var(--gold)">密度 ${(attractorData.density*100).toFixed(0)}%</span>
+      <span style="color:var(--blue-l)">预测和数 ${attractorData.predictedSum}</span>
+      <span style="color:var(--green)">偏移 ${attractorData.correction>0?'+':''}${(attractorData.correction*100).toFixed(1)}σ</span>`;
+  }
+
+  function renderNegBinChart() {
+    const el = document.getElementById('negbin-chart');
+    const maxH = Math.max(...negbinData.map(d=>d.h));
+    el.innerHTML = negbinData.map(d => {
+      const pct = Math.round(d.h/maxH*100);
+      const isCore = coreRed.includes(d.n);
+      const color = d.cold ? 'linear-gradient(90deg,#a29bfe,#fd79a8)' : 'linear-gradient(90deg,#74b9ff,#2ecc71)';
+      const kStr = d.k === 0 ? '热' : `k=${d.k}`;
+      return `<div class="entropy-row">
+        <span class="entropy-label" style="${isCore?'color:var(--red-l);font-weight:700':d.cold?'color:#a29bfe':''}">${fmt(d.n)}</span>
+        <div class="entropy-bg"><div class="entropy-fill" style="width:${pct}%;background:${color}"></div></div>
+        <span class="entropy-val" style="${d.cold?'color:#fd79a8':'color:var(--green)'}">${(d.h*100).toFixed(1)}%<span style="font-size:9px;color:var(--muted);margin-left:2px">${kStr}</span></span>
+      </div>`;
+    }).join('') + `<div style="font-size:10px;color:var(--muted);margin-top:8px">
+      <span style="color:#a29bfe">■</span> 冷号（过散回弹） &nbsp; <span style="color:#74b9ff">■</span> 近期出现号</div>`;
+  }
+
+  function renderPageRankChart() {
+    const el = document.getElementById('pagerank-chart');
+    const maxPR = Math.max(...pagerankData.map(d=>d.pr));
+    el.innerHTML = '<div style="font-size:10px;color:var(--muted);margin-bottom:6px">均匀基准 3.03% · 高于基准=共现结构优势</div>'
+      + pagerankData.map(d => {
+        const pct = Math.round(d.pr/maxPR*100);
+        const isCore = coreRed.includes(d.n);
+        return `<div class="entropy-row">
+          <span class="entropy-label" style="${isCore?'color:var(--red-l);font-weight:700':''}">${fmt(d.n)}</span>
+          <div class="entropy-bg"><div class="entropy-fill" style="width:${pct}%;background:linear-gradient(90deg,#0d47a1,#74b9ff)"></div></div>
+          <span class="entropy-val" style="${d.pr>3.03?'color:var(--blue-l)':'color:var(--muted)'}">${d.pr.toFixed(2)}%</span>
+        </div>`;
+      }).join('');
+  }
+
+  function renderMarkovTable() {
+    document.getElementById('markov-table-body').innerHTML = markovTopTrans.map(row => `
+      <tr>
+        <td>${makeBall(row.from,false,'ball-xs')}</td>
+        <td>${makeBall(row.to,false,'ball-xs')}</td>
+        <td><span style="color:var(--gold);font-weight:700">${(row.prob*100).toFixed(1)}%</span></td>
+        <td>
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden">
+              <div style="width:${row.strength}%;height:100%;background:var(--blue-l);border-radius:2px"></div>
+            </div>
+            <span style="font-size:10px;color:var(--blue-l);width:26px">${row.strength}%</span>
+          </div>
+        </td>
+      </tr>`).join('');
+  }
+
+  // render immediately
+  renderEntropyChart();
+  renderMarkovChart();
+  renderRQAChart();
+  renderNegBinChart();
+  renderPageRankChart();
+  renderMarkovTable();
+
+  // ─── COLLAPSIBLE ──────────────────────────────────────
+  function toggleCollapse(hd) {
+    const icon = hd.querySelector('.coll-icon');
+    const body = hd.nextElementSibling;
+    const open = body.classList.contains('open');
+    if (open) {
+      body.classList.remove('open'); icon.classList.remove('open'); hd.classList.remove('open');
+    } else {
+      body.classList.add('open'); icon.classList.add('open'); hd.classList.add('open');
+      if (body.querySelector('#attractor-canvas') && !attractorRendered) {
+        attractorRendered = true; setTimeout(renderAttractor, 50);
+      }
+    }
+  }
+
+  // ─── TAB SWITCHING ────────────────────────────────────
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.scheme-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+id).classList.add('active');
+  }
+
+  // ─── BOTTOM NAV ───────────────────────────────────────
+  function navTo(id, btn) {
+    document.querySelectorAll('.bottom-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+</script>
+</body>
+</html>

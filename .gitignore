@@ -1,0 +1,6 @@
+outputs/history/
+outputs/.auto_update.lock
+outputs/auto_update.log
+__pycache__/
+*.pyc
+.DS_Store

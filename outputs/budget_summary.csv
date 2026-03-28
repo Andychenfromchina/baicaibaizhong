@@ -1,0 +1,7 @@
+budget,steps,total_cost,total_return_all_prizes,total_profit_all_prizes,roi_all_prizes,avg_match_score,max_red_hits_seen,blue_hit_tickets,winning_issue_count,winning_issue_rate,value_hit_issue_count,value_hit_issue_rate,strong_hit_issue_count,strong_hit_issue_rate,family_usage,prize_counts
+10,901,2310,475,-1835,-0.7944,0.2998,4,77,76,0.0844,6,0.0067,0,0.0,"{'hold': 670, 'blue_fushi': 179, 'single_pack': 52}","{'六等奖': 73, '五等奖': 11}"
+50,901,27286,5255,-22031,-0.8074,1.0361,4,853,777,0.8624,59,0.0655,2,0.0022,"{'hold': 95, 'blue_fushi': 712, 'dantuo': 88, 'single_pack': 3, 'full_fushi': 3}","{'六等奖': 791, '五等奖': 90, '四等奖': 2}"
+100,901,57706,9560,-48146,-0.8343,0.6978,4,1644,303,0.3363,39,0.0433,1,0.0011,"{'hold': 318, 'dantuo': 403, 'full_fushi': 147, 'single_pack': 33}","{'六等奖': 1552, '五等奖': 160, '四等奖': 1}"
+200,901,88400,16540,-71860,-0.8129,0.544,4,2411,243,0.2697,36,0.04,3,0.0033,"{'hold': 459, 'dantuo': 422, 'single_pack': 20}","{'六等奖': 2286, '五等奖': 271, '四等奖': 12}"
+500,901,289524,59735,-229789,-0.7937,0.7556,5,8232,375,0.4162,68,0.0755,10,0.0111,"{'hold': 287, 'dantuo': 429, 'single_pack': 14, 'full_fushi': 171}","{'六等奖': 7733, '五等奖': 1227, '四等奖': 44}"
+1000,901,169176,37060,-132116,-0.7809,0.2284,5,4270,73,0.081,23,0.0255,4,0.0044,"{'hold': 721, 'dantuo': 150, 'full_fushi': 30}","{'六等奖': 4046, '五等奖': 683, '四等奖': 50}"

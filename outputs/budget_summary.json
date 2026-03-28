@@ -1,0 +1,167 @@
+[
+  {
+    "budget": 10,
+    "steps": 901,
+    "total_cost": 2310,
+    "total_return_all_prizes": 475,
+    "total_profit_all_prizes": -1835,
+    "roi_all_prizes": -0.7944,
+    "avg_match_score": 0.2998,
+    "max_red_hits_seen": 4,
+    "blue_hit_tickets": 77,
+    "winning_issue_count": 76,
+    "winning_issue_rate": 0.0844,
+    "value_hit_issue_count": 6,
+    "value_hit_issue_rate": 0.0067,
+    "strong_hit_issue_count": 0,
+    "strong_hit_issue_rate": 0.0,
+    "family_usage": {
+      "hold": 670,
+      "blue_fushi": 179,
+      "single_pack": 52
+    },
+    "prize_counts": {
+      "六等奖": 73,
+      "五等奖": 11
+    }
+  },
+  {
+    "budget": 50,
+    "steps": 901,
+    "total_cost": 27286,
+    "total_return_all_prizes": 5255,
+    "total_profit_all_prizes": -22031,
+    "roi_all_prizes": -0.8074,
+    "avg_match_score": 1.0361,
+    "max_red_hits_seen": 4,
+    "blue_hit_tickets": 853,
+    "winning_issue_count": 777,
+    "winning_issue_rate": 0.8624,
+    "value_hit_issue_count": 59,
+    "value_hit_issue_rate": 0.0655,
+    "strong_hit_issue_count": 2,
+    "strong_hit_issue_rate": 0.0022,
+    "family_usage": {
+      "hold": 95,
+      "blue_fushi": 712,
+      "dantuo": 88,
+      "single_pack": 3,
+      "full_fushi": 3
+    },
+    "prize_counts": {
+      "六等奖": 791,
+      "五等奖": 90,
+      "四等奖": 2
+    }
+  },
+  {
+    "budget": 100,
+    "steps": 901,
+    "total_cost": 57706,
+    "total_return_all_prizes": 9560,
+    "total_profit_all_prizes": -48146,
+    "roi_all_prizes": -0.8343,
+    "avg_match_score": 0.6978,
+    "max_red_hits_seen": 4,
+    "blue_hit_tickets": 1644,
+    "winning_issue_count": 303,
+    "winning_issue_rate": 0.3363,
+    "value_hit_issue_count": 39,
+    "value_hit_issue_rate": 0.0433,
+    "strong_hit_issue_count": 1,
+    "strong_hit_issue_rate": 0.0011,
+    "family_usage": {
+      "hold": 318,
+      "dantuo": 403,
+      "full_fushi": 147,
+      "single_pack": 33
+    },
+    "prize_counts": {
+      "六等奖": 1552,
+      "五等奖": 160,
+      "四等奖": 1
+    }
+  },
+  {
+    "budget": 200,
+    "steps": 901,
+    "total_cost": 88400,
+    "total_return_all_prizes": 16540,
+    "total_profit_all_prizes": -71860,
+    "roi_all_prizes": -0.8129,
+    "avg_match_score": 0.544,
+    "max_red_hits_seen": 4,
+    "blue_hit_tickets": 2411,
+    "winning_issue_count": 243,
+    "winning_issue_rate": 0.2697,
+    "value_hit_issue_count": 36,
+    "value_hit_issue_rate": 0.04,
+    "strong_hit_issue_count": 3,
+    "strong_hit_issue_rate": 0.0033,
+    "family_usage": {
+      "hold": 459,
+      "dantuo": 422,
+      "single_pack": 20
+    },
+    "prize_counts": {
+      "六等奖": 2286,
+      "五等奖": 271,
+      "四等奖": 12
+    }
+  },
+  {
+    "budget": 500,
+    "steps": 901,
+    "total_cost": 289524,
+    "total_return_all_prizes": 59735,
+    "total_profit_all_prizes": -229789,
+    "roi_all_prizes": -0.7937,
+    "avg_match_score": 0.7556,
+    "max_red_hits_seen": 5,
+    "blue_hit_tickets": 8232,
+    "winning_issue_count": 375,
+    "winning_issue_rate": 0.4162,
+    "value_hit_issue_count": 68,
+    "value_hit_issue_rate": 0.0755,
+    "strong_hit_issue_count": 10,
+    "strong_hit_issue_rate": 0.0111,
+    "family_usage": {
+      "hold": 287,
+      "dantuo": 429,
+      "single_pack": 14,
+      "full_fushi": 171
+    },
+    "prize_counts": {
+      "六等奖": 7733,
+      "五等奖": 1227,
+      "四等奖": 44
+    }
+  },
+  {
+    "budget": 1000,
+    "steps": 901,
+    "total_cost": 169176,
+    "total_return_all_prizes": 37060,
+    "total_profit_all_prizes": -132116,
+    "roi_all_prizes": -0.7809,
+    "avg_match_score": 0.2284,
+    "max_red_hits_seen": 5,
+    "blue_hit_tickets": 4270,
+    "winning_issue_count": 73,
+    "winning_issue_rate": 0.081,
+    "value_hit_issue_count": 23,
+    "value_hit_issue_rate": 0.0255,
+    "strong_hit_issue_count": 4,
+    "strong_hit_issue_rate": 0.0044,
+    "family_usage": {
+      "hold": 721,
+      "dantuo": 150,
+      "full_fushi": 30
+    },
+    "prize_counts": {
+      "六等奖": 4046,
+      "五等奖": 683,
+      "四等奖": 50
+    }
+  }
+]
