@@ -243,6 +243,75 @@
   </button>
 </div>
 
+<!-- ═══ SCHEMES ═══ -->
+<div class="section scroll-section" id="section-scheme" style="margin-top:6px">
+  <div class="section-title">投注方案</div>
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="switchTab('A',this)">方案A · 6元</button>
+    <button class="tab-btn" onclick="switchTab('B',this)">方案B · 16元 <span class="rec-badge">推荐</span></button>
+    <button class="tab-btn" onclick="switchTab('C',this)">方案C · 90元</button>
+    <button class="tab-btn" onclick="switchTab('D',this)">方案D · 120元</button>
+  </div>
+
+  <!-- A -->
+  <div class="card scheme-panel active" id="panel-A">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">精准单式 · TOP3 蓝球</div>
+        <div class="scheme-desc">3注 · 核心蓝球 <strong style="color:var(--blue-l)" id="scheme-a-blue-label">02★</strong> 领衔</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">6<span style="font-size:13px">元</span></div><div class="cost-label">总成本</div></div>
+    </div>
+    <div class="tscroll"><table class="ticket-table"><thead><tr><th>注</th><th>红球（6个）</th><th>蓝球</th></tr></thead><tbody id="table-A"></tbody></table></div>
+    <div class="conf-row"><span class="conf-label">置信度</span><div class="conf-bg"><div class="conf-fill" style="width:84%"></div></div><span class="conf-pct">84%</span></div>
+  </div>
+
+  <!-- B -->
+  <div class="card scheme-panel" id="panel-B">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">蓝球复式 6+8 <span class="rec-badge">最强</span></div>
+        <div class="scheme-desc">1红组 × TOP8蓝 = 8张 · 蓝覆盖 50%</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">16<span style="font-size:13px">元</span></div><div class="cost-label">50元预算</div></div>
+    </div>
+    <div style="margin-bottom:12px"><div class="dt-label">🔴 红球（固定1组）</div><div class="balls-row" id="balls-B-red"></div></div>
+    <div><div class="dt-label">🔵 蓝球池（TOP 8）</div><div class="balls-row" id="balls-B-blue"></div></div>
+    <div style="margin-top:12px;padding:9px 12px;background:var(--bg3);border-radius:8px;font-size:11px;color:var(--muted)">8张票各配1蓝 · 总16元 · 蓝球理论覆盖 <strong style="color:var(--gold)">50%</strong></div>
+    <div class="conf-row"><span class="conf-label">置信度</span><div class="conf-bg"><div class="conf-fill" style="width:84%"></div></div><span class="conf-pct">84%</span></div>
+  </div>
+
+  <!-- C -->
+  <div class="card scheme-panel" id="panel-C">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">胆拖 · 2胆6拖+3蓝</div>
+        <div class="scheme-desc">C(6,4)=15组 × 3蓝 × 2元 = 90元</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">90<span style="font-size:13px">元</span></div><div class="cost-label">100元预算</div></div>
+    </div>
+    <div class="dt-label">⚡ 胆码（评分TOP2，必须全中）</div><div class="balls-row" id="balls-C-dan" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔴 拖码（4个命中即可）</div><div class="balls-row" id="balls-C-tuo" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔵 蓝球（TOP 3）</div><div class="balls-row" id="balls-C-blue"></div>
+    <div class="conf-row"><span class="conf-label">dantuo EMA</span><div class="conf-bg"><div class="conf-fill" style="width:43%"></div></div><span class="conf-pct">43%</span></div>
+  </div>
+
+  <!-- D -->
+  <div class="card scheme-panel" id="panel-D">
+    <div class="scheme-header">
+      <div>
+        <div class="scheme-title">胆拖 · 3胆6拖+3蓝</div>
+        <div class="scheme-desc">C(6,3)=20组 × 3蓝 × 2元 = 120元</div>
+      </div>
+      <div class="cost-badge"><div class="cost-num">120<span style="font-size:13px">元</span></div><div class="cost-label">200元预算</div></div>
+    </div>
+    <div class="dt-label">⚡ 胆码（评分TOP3，全部必中）</div><div class="balls-row" id="balls-D-dan" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔴 拖码（3个命中即可）</div><div class="balls-row" id="balls-D-tuo" style="margin-bottom:12px"></div>
+    <div class="dt-label">🔵 蓝球（TOP 3）</div><div class="balls-row" id="balls-D-blue"></div>
+    <div class="conf-row"><span class="conf-label">dantuo EMA</span><div class="conf-bg"><div class="conf-fill" style="width:37%"></div></div><span class="conf-pct">37%</span></div>
+  </div>
+</div>
+
 <div class="page">
 
 <!-- ═══ LAST DRAW PRIZE CARD ═══ -->
@@ -314,75 +383,6 @@
   <div class="card">
     <div style="font-size:12px;color:var(--muted);margin-bottom:12px">🔵 蓝球 TOP 8 <span style="font-size:10px;color:var(--muted)">markov 47.7% + gap 42.9%</span></div>
     <div class="rank-list" id="blue-rank"></div>
-  </div>
-</div>
-
-<!-- ═══ SCHEMES ═══ -->
-<div class="section scroll-section" id="section-scheme">
-  <div class="section-title">投注方案</div>
-  <div class="tabs-wrap">
-    <button class="tab-btn active" onclick="switchTab('A',this)">方案A · 6元</button>
-    <button class="tab-btn" onclick="switchTab('B',this)">方案B · 16元 <span class="rec-badge">推荐</span></button>
-    <button class="tab-btn" onclick="switchTab('C',this)">方案C · 90元</button>
-    <button class="tab-btn" onclick="switchTab('D',this)">方案D · 120元</button>
-  </div>
-
-  <!-- A -->
-  <div class="card scheme-panel active" id="panel-A">
-    <div class="scheme-header">
-      <div>
-        <div class="scheme-title">精准单式 · TOP3 蓝球</div>
-        <div class="scheme-desc">3注 · 核心蓝球 <strong style="color:var(--blue-l)" id="scheme-a-blue-label">02★</strong> 领衔</div>
-      </div>
-      <div class="cost-badge"><div class="cost-num">6<span style="font-size:13px">元</span></div><div class="cost-label">总成本</div></div>
-    </div>
-    <div class="tscroll"><table class="ticket-table"><thead><tr><th>注</th><th>红球（6个）</th><th>蓝球</th></tr></thead><tbody id="table-A"></tbody></table></div>
-    <div class="conf-row"><span class="conf-label">置信度</span><div class="conf-bg"><div class="conf-fill" style="width:84%"></div></div><span class="conf-pct">84%</span></div>
-  </div>
-
-  <!-- B -->
-  <div class="card scheme-panel" id="panel-B">
-    <div class="scheme-header">
-      <div>
-        <div class="scheme-title">蓝球复式 6+8 <span class="rec-badge">最强</span></div>
-        <div class="scheme-desc">1红组 × TOP8蓝 = 8张 · 蓝覆盖 50%</div>
-      </div>
-      <div class="cost-badge"><div class="cost-num">16<span style="font-size:13px">元</span></div><div class="cost-label">50元预算</div></div>
-    </div>
-    <div style="margin-bottom:12px"><div class="dt-label">🔴 红球（固定1组）</div><div class="balls-row" id="balls-B-red"></div></div>
-    <div><div class="dt-label">🔵 蓝球池（TOP 8）</div><div class="balls-row" id="balls-B-blue"></div></div>
-    <div style="margin-top:12px;padding:9px 12px;background:var(--bg3);border-radius:8px;font-size:11px;color:var(--muted)">8张票各配1蓝 · 总16元 · 蓝球理论覆盖 <strong style="color:var(--gold)">50%</strong></div>
-    <div class="conf-row"><span class="conf-label">置信度</span><div class="conf-bg"><div class="conf-fill" style="width:84%"></div></div><span class="conf-pct">84%</span></div>
-  </div>
-
-  <!-- C -->
-  <div class="card scheme-panel" id="panel-C">
-    <div class="scheme-header">
-      <div>
-        <div class="scheme-title">胆拖 · 2胆6拖+3蓝</div>
-        <div class="scheme-desc">C(6,4)=15组 × 3蓝 × 2元 = 90元</div>
-      </div>
-      <div class="cost-badge"><div class="cost-num">90<span style="font-size:13px">元</span></div><div class="cost-label">100元预算</div></div>
-    </div>
-    <div class="dt-label">⚡ 胆码（评分TOP2，必须全中）</div><div class="balls-row" id="balls-C-dan" style="margin-bottom:12px"></div>
-    <div class="dt-label">🔴 拖码（4个命中即可）</div><div class="balls-row" id="balls-C-tuo" style="margin-bottom:12px"></div>
-    <div class="dt-label">🔵 蓝球（TOP 3）</div><div class="balls-row" id="balls-C-blue"></div>
-    <div class="conf-row"><span class="conf-label">dantuo EMA</span><div class="conf-bg"><div class="conf-fill" style="width:43%"></div></div><span class="conf-pct">43%</span></div>
-  </div>
-
-  <!-- D -->
-  <div class="card scheme-panel" id="panel-D">
-    <div class="scheme-header">
-      <div>
-        <div class="scheme-title">胆拖 · 3胆6拖+3蓝</div>
-        <div class="scheme-desc">C(6,3)=20组 × 3蓝 × 2元 = 120元</div>
-      </div>
-      <div class="cost-badge"><div class="cost-num">120<span style="font-size:13px">元</span></div><div class="cost-label">200元预算</div></div>
-    </div>
-    <div class="dt-label">⚡ 胆码（评分TOP3，全部必中）</div><div class="balls-row" id="balls-D-dan" style="margin-bottom:12px"></div>
-    <div class="dt-label">🔴 拖码（3个命中即可）</div><div class="balls-row" id="balls-D-tuo" style="margin-bottom:12px"></div>
-    <div class="dt-label">🔵 蓝球（TOP 3）</div><div class="balls-row" id="balls-D-blue"></div>
-    <div class="conf-row"><span class="conf-label">dantuo EMA</span><div class="conf-bg"><div class="conf-fill" style="width:37%"></div></div><span class="conf-pct">37%</span></div>
   </div>
 </div>
 
