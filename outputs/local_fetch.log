@@ -1,0 +1,15 @@
+2026-03-29 22:14:36  ══ 本地抓取启动 ══
+2026-03-29 22:14:36  本地最新: 2026033，请求: 2026034
+2026-03-29 22:14:36  使用代理 127.0.0.1:7892
+2026-03-29 22:14:37  新增 1 期
+2026-03-29 22:14:37  推送 official_draws.json 到服务器...
+spawn scp -o StrictHostKeyChecking=no /Users/andy/Claude/baicaibaizhong/outputs/official_draws.json root@43.106.103.59:/opt/baicaibaizhong/outputs/official_draws.json
+root@43.106.103.59's password: 
+official_draws.json                             0%    0     0.0KB/s   --:-- ETAofficial_draws.json                             0%    0     0.0KB/s   --:-- ETAofficial_draws.json                             0%    0     0.0KB/s   --:-- ETAofficial_draws.json                             0%    0     0.0KB/s   --:-- ETAofficial_draws.json                             9%  255KB 254.0KB/s   00:09 ETAofficial_draws.json                             9%  255KB 228.6KB/s   00:10 ETAofficial_draws.json                            29%  765KB 255.6KB/s   00:06 ETAofficial_draws.json                            49% 1275KB 280.9KB/s   00:04 ETAofficial_draws.json                            89% 2295KB 354.4KB/s   00:00 ETAofficial_draws.json                           100% 2550KB 305.8KB/s   00:08    
+2026-03-29 22:14:50  触发服务器端 cron_update.sh...
+spawn ssh -o StrictHostKeyChecking=no root@43.106.103.59 bash /opt/baicaibaizhong/cron_update.sh 2>&1
+Connection closed by 43.106.103.59 port 22
+send: spawn id exp5 not open
+    while executing
+"send "Chen123123\r""
+2026-03-29 22:14:55  ══ 本地抓取完成 ══
